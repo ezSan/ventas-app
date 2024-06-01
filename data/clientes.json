@@ -1,0 +1,5 @@
+[
+    { "id": 1, "nombre": "Cliente A", "direccion": "Calle 123", "telefono": "123456789" },
+    { "id": 2, "nombre": "Cliente B", "direccion": "Calle 456", "telefono": "987654321" }
+  ]
+  
