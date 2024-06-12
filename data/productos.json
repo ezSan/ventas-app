@@ -1,5 +1,22 @@
 [
-    { "id": 1, "nombre": "Producto A", "precio": 100 },
-    { "id": 2, "nombre": "Producto B", "precio": 200 }
-  ]
-  
+  { "id": 1, "nombre": "Clásicas", "precio": 545.95, "peso": 65, "familia": "Slice" },
+  { "id": 13, "nombre": "Corte Americano", "precio": 545.95, "peso": 65, "familia": "Slice" },
+  { "id": 2, "nombre": "Ketchup", "precio": 723.1, "peso": 65, "familia": "Slice" },
+  { "id": 3, "nombre": "Cheddar", "precio": 723.1, "peso": 65, "familia": "Slice" },
+  { "id": 4, "nombre": "Jamón", "precio": 723.1, "peso": 65, "familia": "Slice" },
+  { "id": 5, "nombre": "Provenzal", "precio": 723.1, "peso": 65, "familia": "Slice" },
+  { "id": 6, "nombre": "Pesto", "precio": 723.1, "peso": 65, "familia": "Slice" },
+  { "id": 8, "nombre": "Salame", "precio": 723.1, "peso": 65, "familia": "Slice" },
+  { "id": 9, "nombre": "Batatas Fritas", "precio": 566.7, "peso": 65, "familia": "Slice" },
+  { "id": 10, "nombre": "Palito Salado", "precio": 441.47, "peso": 120, "familia": "Slice" },
+  { "id": 11, "nombre": "Palito Cheddar", "precio": 605.31, "peso": 120, "familia": "Slice" },
+  { "id": 12, "nombre": "Palito Jamón", "precio": 605.31, "peso": 120, "familia": "Slice" },
+  { "id": 14, "nombre": "Papas pay", "precio": 911.05, "peso": 140, "familia": "Slice" },
+  { "id": 15, "nombre": "Papas Españolas", "precio": 941.08, "peso": 150, "familia": "Slice" },
+  { "id": 16, "nombre": "Papas Clasicas", "precio": 1554.41, "peso": 250, "familia": "Slice" },
+  { "id": 17, "nombre": "Conitos Queso", "precio": 823.01, "peso": 100, "familia": "Slice" },
+  { "id": 18, "nombre": "Conitos Pizza", "precio": 823.01, "peso": 100, "familia": "Slice" },
+  { "id": 19, "nombre": "Pancetitas", "precio": 639.49, "peso": 65, "familia": "Slice" },
+  { "id": 20, "nombre": "Papas Corte americano", "precio": 941.08, "peso": 150, "familia": "Slice" },
+  { "id": 21, "nombre": "Papas Salame", "precio": 1380.04, "peso": 150, "familia": "Slice" }
+]

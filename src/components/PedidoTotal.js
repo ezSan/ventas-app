@@ -1,16 +1,26 @@
 import React from 'react';
-import { Text, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet } from 'react-native';
+import { fixResult } from '../utils/numberUtils';
 
 const PedidoTotal = ({ total }) => {
   return (
-    <Text style={styles.total}>Total: ${total}</Text>
+    <View style={styles.container}>
+      <Text style={styles.texto}>Total: ${fixResult(total)}</Text>
+    </View>
   );
 };
 
 const styles = StyleSheet.create({
-  total: {
-    marginTop: 10,
+  container: {
+    padding: 16,
+    backgroundColor: '#FFF',
+    alignItems: 'center',
+    borderRadius: 8,
+    marginVertical: 8,
+  },
+  texto: {
     fontSize: 18,
+    color: '#DC2F02',
     fontWeight: 'bold',
   },
 });

@@ -11,11 +11,15 @@ const ClienteItem = ({ cliente, onPress }) => {
 
 const styles = StyleSheet.create({
   item: {
-    padding: 10,
+    padding: 15,
+    marginVertical: 8,
+    marginHorizontal: 16,
+    backgroundColor: '#DC2F01',
+    borderRadius: 8,
+  },
+  text: {
+    color: '#FFF',
     fontSize: 18,
-    height: 44,
-    borderBottomWidth: 1,
-    borderBottomColor: '#ccc',
   },
 });
 
