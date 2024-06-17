@@ -1,17 +1,20 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import {
   View,
   FlatList,
   TextInput,
   Button,
   StyleSheet,
+  Text,
 } from "react-native";
 import ProductoItem from "../components/ProductoItem";
 import PedidoTotal from "../components/PedidoTotal";
 import productosData from "../../data/productos.json";
+import { AppContext } from "../context/AppContext";
 
 const ProductosScreen = ({ route, navigation }) => {
   const { cliente } = route.params;
+  const { dispatch } = useContext(AppContext);
   const [productos, setProductos] = useState([]);
   const [busqueda, setBusqueda] = useState("");
   const [productosFiltrados, setProductosFiltrados] = useState([]);
@@ -33,7 +36,10 @@ const ProductosScreen = ({ route, navigation }) => {
 
   const agregarProducto = (producto, cantidad) => {
     setPedido((prevPedido) => {
-      const newPedido = { ...prevPedido, [producto.id]: { ...producto, cantidad } };
+      const newPedido = {
+        ...prevPedido,
+        [producto.id]: { ...producto, cantidad },
+      };
       calcularTotal(newPedido);
       return newPedido;
     });
@@ -53,12 +59,16 @@ const ProductosScreen = ({ route, navigation }) => {
   };
 
   const calcularTotal = (pedido) => {
-    const newTotal = Object.values(pedido).reduce((sum, { precio, cantidad }) => sum + (precio * cantidad), 0);
+    const newTotal = Object.values(pedido).reduce(
+      (sum, { precio, cantidad }) => sum + precio * cantidad,
+      0
+    );
     setTotal(newTotal);
   };
 
-  const confirmarPedido = () => {
-    navigation.navigate("Pedidos", { pedido,total });
+  const irAPedidoScreen = () => {
+    dispatch({ type: "SET_PEDIDO", payload: { pedido, total } });
+    navigation.navigate("Pedido");
   };
 
   return (
@@ -82,7 +92,7 @@ const ProductosScreen = ({ route, navigation }) => {
       />
       <View>
         <PedidoTotal total={total} />
-        <Button title="RESUMEN DE PEDIDO" onPress={confirmarPedido} />
+        <Button title="VER PEDIDO" onPress={irAPedidoScreen} />
       </View>
     </View>
   );
@@ -90,9 +100,9 @@ const ProductosScreen = ({ route, navigation }) => {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    backgroundColor: "#fff",
+    flex: 1,    
     padding: 16,
+    backgroundColor:"#ffffff"
   },
   input: {
     height: 40,
