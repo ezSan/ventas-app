@@ -13,14 +13,19 @@ const PedidoTotal = ({ total }) => {
 const styles = StyleSheet.create({
   container: {
     padding: 16,
-    backgroundColor: '#FFF',
+    backgroundColor: '#FFFFFF',
     alignItems: 'center',
     borderRadius: 8,
     marginVertical: 8,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.2,
+    shadowRadius: 2,
+    elevation: 1,
   },
   texto: {
     fontSize: 18,
-    color: '#DC2F02',
+    color: '#F44336', // Material UI Red
     fontWeight: 'bold',
   },
 });

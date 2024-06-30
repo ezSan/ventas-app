@@ -1,7 +1,8 @@
 import React, { useState, useEffect, useContext } from "react";
-import { View, FlatList, StyleSheet } from "react-native";
+import { View, FlatList, StyleSheet, Button } from "react-native";
 import ClienteItem from "../components/ClienteItem";
-import clientesData from "../../data/clientes.json";
+import { collection, getDocs } from 'firebase/firestore';
+import { db } from '../../firebaseConfig.js';
 import { AppContext } from "../context/AppContext";
 
 const ClientesScreen = ({ navigation }) => {
@@ -9,28 +10,41 @@ const ClientesScreen = ({ navigation }) => {
   const { state, dispatch } = useContext(AppContext);
 
   useEffect(() => {
-    setClientes(clientesData);
+    const fetchClientes = async () => {
+      try {
+        const querySnapshot = await getDocs(collection(db, 'clients'));
+        const clientsList = querySnapshot.docs.map(doc => ({
+          id: doc.id,
+          ...doc.data(),
+        }));
+        setClientes(clientsList);
+      } catch (e) {
+        console.error('Error fetching clients: ', e);
+      }
+    };
+
+    fetchClientes();
   }, []);
 
- /*  useEffect(() => {
-    console.log("State:", state);
-  }, [state]); */
+  const handleNavigateToAddClient = () => {
+    navigation.navigate("AddClient");
+  };
 
   return (
     <View style={styles.container}>
       <FlatList
         data={clientes}
-        keyExtractor={(item) => item.id.toString()}
-        renderItem={({ item }) => (
+        keyExtractor={item => item.id.toString()}
+        renderItem={({ item }) =>
           <ClienteItem
             cliente={item}
-            onPress={(cliente) => {
+            onPress={cliente => {
               navigation.navigate("Productos", { cliente });
-              dispatch({type:"SET_CLIENTE", payload:cliente})
+              dispatch({ type: "SET_CLIENTE", payload: cliente });
             }}
-          />
-        )}
+          />}
       />
+      <Button title="Agregar Cliente" onPress={handleNavigateToAddClient} />
     </View>
   );
 };

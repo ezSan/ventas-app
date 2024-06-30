@@ -1,5 +1,5 @@
 import React, { useContext, useState } from "react";
-import { View, FlatList, Text, Button, StyleSheet } from "react-native";
+import { View, FlatList, Text, Button, StyleSheet, Alert } from "react-native";
 import { RadioButton } from "react-native-paper";
 import { AppContext } from "../context/AppContext";
 import { fixResult } from "../utils/numberUtils";
@@ -15,7 +15,21 @@ const PedidoScreen = ({ navigation }) => {
       type: "CONFIRMAR_PEDIDO",
       payload: { invoiceType },
     });
-    navigation.navigate("Historial");
+
+    Alert.alert(
+      "Pedido Confirmado",
+      "Su pedido ha sido confirmado.",
+      [
+        {
+          text: "OK",
+          onPress: () => {
+            navigation.goBack();
+            navigation.navigate("Clientes");
+          },
+        },
+      ],
+      { cancelable: false }
+    );
   };
 
   return (
@@ -81,7 +95,7 @@ const styles = StyleSheet.create({
   },
   radioLabel: {
     marginLeft: 8,
-  },
+  }, 
   totalContainer: {
     marginTop: 16,
     alignItems: "center",
